@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deepak — 3D Demo</title>
+  <style>
+    html,body{height:100%;margin:0;background:#020617;color:#cbd5e1;font-family:Inter,Segoe UI,Roboto,Arial}
+    .scene{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+    #overlay{position:absolute;top:24px;left:24px;background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.04)}
+    a{color:#7c3aed}
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div id="overlay">
+      <strong>Interactive 3D Demo</strong>
+      <div style="font-size:13px;margin-top:6px">Drag to rotate • Scroll to zoom</div>
+      <div style="margin-top:8px;font-size:12px">Built with three.js</div>
+    </div>
+    <canvas id="c"></canvas>
+  </div>
+
+  <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    const canvas = document.getElementById('c');
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+    renderer.setPixelRatio(window.devicePixelRatio);
+    const fov = 45;
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x071028);
+
+    const camera = new THREE.PerspectiveCamera(fov, 2, 0.1, 100);
+    camera.position.set(0,0,6);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    // lights
+    const amb = new THREE.AmbientLight(0xffffff, 0.3);
+    scene.add(amb);
+    const p = new THREE.PointLight(0x7c3aed, 1.2);
+    p.position.set(5,5,5);
+    scene.add(p);
+
+    // geometry: subtle low-poly icosahedron
+    const geom = new THREE.IcosahedronGeometry(1.8, 1);
+    const mat = new THREE.MeshStandardMaterial({
+      color: 0x0b1220,
+      metalness: 0.6,
+      roughness: 0.2,
+      emissive: 0x062036,
+      emissiveIntensity: 0.3,
+      flatShading: true
+    });
+    const mesh = new THREE.Mesh(geom, mat);
+    scene.add(mesh);
+
+    // wireframe glow
+    const wire = new THREE.LineSegments(new THREE.WireframeGeometry(geom), new THREE.LineBasicMaterial({color:0x7c3aed,opacity:0.9,transparent:true}));
+    scene.add(wire);
+
+    function resizeRendererToDisplaySize(renderer) {
+      const canvas = renderer.domElement;
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      const needResize = canvas.width !== width || canvas.height !== height;
+      if (needResize) renderer.setSize(width, height, false);
+      return needResize;
+    }
+
+    function render(time) {
+      time *= 0.001;
+      if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+      }
+
+      mesh.rotation.x = time * 0.2;
+      mesh.rotation.y = time * 0.4;
+      wire.rotation.copy(mesh.rotation);
+
+      controls.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+
+    // set initial canvas size to the window
+    function fitCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+    window.addEventListener('resize', fitCanvas);
+    fitCanvas();
+  </script>
+</body>
+</html>

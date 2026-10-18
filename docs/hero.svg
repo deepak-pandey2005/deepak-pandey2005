@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#091229"/>
+      <stop offset="100%" stop-color="#021025"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" x2="1">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18" result="b" />
+      <feBlend in="SourceGraphic" in2="b" mode="screen"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="360" fill="url(#g)"/>
+
+  <!-- subtle grid -->
+  <g opacity="0.06" stroke="#ffffff" stroke-width="1">
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 H0 V60"/>
+    </pattern>
+    <rect width="1200" height="360" fill="url(#grid)"/>
+  </g>
+
+  <!-- glowing orb -->
+  <circle cx="240" cy="180" r="100" fill="url(#glow)" filter="url(#soft)" />
+
+  <!-- 3D-ish rotating hexagon (animated) -->
+  <g transform="translate(780,180)">
+    <g id="hex">
+      <polygon points="-70,0 -35,-60 35,-60 70,0 35,60 -35,60" fill="#0b1220" stroke="#0f172a" stroke-width="2"/>
+      <polygon points="-70,0 -35,-60 35,-60 70,0 35,60 -35,60" fill="url(#glow)" opacity="0.18"/>
+      <polygon points="-44,0 -22,-38 22,-38 44,0 22,38 -22,38" fill="#071029" stroke="#061426" stroke-width="1"/>
+    </g>
+    <animateTransform xlink:href="#hex" attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- glass panel text -->
+  <g transform="translate(420,70)">
+    <rect x="0" y="0" width="620" height="220" rx="14" fill="#ffffff" opacity="0.03" />
+    <rect x="0" y="0" width="620" height="220" rx="14" fill="#7C3AED" opacity="0.02"/>
+    <text x="28" y="54" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="28">Deepak Pandey</text>
+    <text x="28" y="94" fill="#9ca3af" font-family="Inter, Arial, sans-serif" font-size="16">Systems Developer • OS & Browser Internals</text>
+    <text x="28" y="150" fill="#a5b4c8" font-family="Inter, Arial, sans-serif" font-size="13">Currently building NullOS — exploring kernels, memory, and low-level performance.</text>
+  </g>
+</svg>
