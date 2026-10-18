@@ -3,100 +3,224 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Deepak — 3D Demo</title>
+  <title>Deepak Pandey | Cyberpunk 3D</title>
   <style>
-    html,body{height:100%;margin:0;background:#020617;color:#cbd5e1;font-family:Inter,Segoe UI,Roboto,Arial}
-    .scene{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
-    #overlay{position:absolute;top:24px;left:24px;background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.04)}
-    a{color:#7c3aed}
+    :root {
+      --bg-1: #020611;
+      --bg-2: #0b1120;
+      --cyan: #67e8f9;
+      --purple: #8b5cf6;
+      --pink: #f472b6;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.22), transparent 24%),
+        radial-gradient(circle at 75% 20%, rgba(103, 232, 249, 0.18), transparent 28%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 42%, #050b18 100%);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", sans-serif;
+      overflow: hidden;
+    }
+
+    .hud {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.42);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(103, 232, 249, 0.28);
+      box-shadow: 0 0 24px rgba(139, 92, 246, 0.18);
+      border-radius: 14px;
+      padding: 14px 18px;
+      max-width: 360px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.9;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(103, 232, 249, 0.26);
+      color: var(--cyan);
+      background: rgba(103, 232, 249, 0.08);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    #c {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
   </style>
 </head>
 <body>
-  <div class="scene">
-    <div id="overlay">
-      <strong>Interactive 3D Demo</strong>
-      <div style="font-size:13px;margin-top:6px">Drag to rotate • Scroll to zoom</div>
-      <div style="margin-top:8px;font-size:12px">Built with three.js</div>
-    </div>
-    <canvas id="c"></canvas>
+  <div class="hud">
+    <div class="eyebrow">Systems / OS</div>
+    <h1>Deepak Pandey</h1>
+    <p>Exploring kernels, browser internals, and low-level engineering through elegant, reliable systems design.</p>
+    <div class="badge">Cyberpunk // 3D</div>
   </div>
+
+  <canvas id="c"></canvas>
 
   <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
   <script src="https://unpkg.com/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
   <script>
     const canvas = document.getElementById('c');
-    const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-    renderer.setPixelRatio(window.devicePixelRatio);
-    const fov = 45;
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x071028);
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x020611, 1);
 
-    const camera = new THREE.PerspectiveCamera(fov, 2, 0.1, 100);
-    camera.position.set(0,0,6);
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x020611, 0.085);
+
+    const camera = new THREE.PerspectiveCamera(42, 2, 0.1, 100);
+    camera.position.set(0, 0.5, 7);
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
+    controls.enablePan = false;
+    controls.enableZoom = true;
+    controls.minDistance = 4;
+    controls.maxDistance = 12;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1.6;
 
-    // lights
-    const amb = new THREE.AmbientLight(0xffffff, 0.3);
-    scene.add(amb);
-    const p = new THREE.PointLight(0x7c3aed, 1.2);
-    p.position.set(5,5,5);
-    scene.add(p);
+    const ambient = new THREE.AmbientLight(0xc7d2fe, 0.7);
+    scene.add(ambient);
 
-    // geometry: subtle low-poly icosahedron
-    const geom = new THREE.IcosahedronGeometry(1.8, 1);
-    const mat = new THREE.MeshStandardMaterial({
-      color: 0x0b1220,
-      metalness: 0.6,
+    const keyLight = new THREE.PointLight(0x67e8f9, 3, 20, 2);
+    keyLight.position.set(3, 4, 5);
+    scene.add(keyLight);
+
+    const accentLight = new THREE.PointLight(0x8b5cf6, 2.5, 20, 2);
+    accentLight.position.set(-5, -2, 3);
+    scene.add(accentLight);
+
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(2.8, 0.06, 24, 220),
+      new THREE.MeshBasicMaterial({ color: 0x67e8f9, transparent: true, opacity: 0.8 })
+    );
+    ring.rotation.x = Math.PI / 2.5;
+    scene.add(ring);
+
+    const group = new THREE.Group();
+    scene.add(group);
+
+    const coreGeom = new THREE.IcosahedronGeometry(1.5, 1);
+    const coreMat = new THREE.MeshStandardMaterial({
+      color: 0x0f172a,
+      emissive: 0x1d4ed8,
+      emissiveIntensity: 0.5,
+      metalness: 0.9,
       roughness: 0.2,
-      emissive: 0x062036,
-      emissiveIntensity: 0.3,
-      flatShading: true
+      flatShading: true,
     });
-    const mesh = new THREE.Mesh(geom, mat);
-    scene.add(mesh);
 
-    // wireframe glow
-    const wire = new THREE.LineSegments(new THREE.WireframeGeometry(geom), new THREE.LineBasicMaterial({color:0x7c3aed,opacity:0.9,transparent:true}));
-    scene.add(wire);
+    const core = new THREE.Mesh(coreGeom, coreMat);
+    group.add(core);
 
-    function resizeRendererToDisplaySize(renderer) {
-      const canvas = renderer.domElement;
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
-      const needResize = canvas.width !== width || canvas.height !== height;
-      if (needResize) renderer.setSize(width, height, false);
-      return needResize;
+    const glow = new THREE.LineSegments(
+      new THREE.WireframeGeometry(coreGeom),
+      new THREE.LineBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.9 })
+    );
+    group.add(glow);
+
+    const torus = new THREE.Mesh(
+      new THREE.TorusKnotGeometry(1.65, 0.36, 220, 26, 2, 3),
+      new THREE.MeshStandardMaterial({
+        color: 0x8b5cf6,
+        emissive: 0x8b5cf6,
+        emissiveIntensity: 0.8,
+        metalness: 0.8,
+        roughness: 0.24,
+      })
+    );
+    torus.rotation.x = 1.2;
+    group.add(torus);
+
+    const starGeo = new THREE.BufferGeometry();
+    const starCount = 1400;
+    const starPositions = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount; i++) {
+      const i3 = i * 3;
+      starPositions[i3] = (Math.random() - 0.5) * 30;
+      starPositions[i3 + 1] = (Math.random() - 0.5) * 30;
+      starPositions[i3 + 2] = (Math.random() - 0.5) * 20;
+    }
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+    const stars = new THREE.Points(
+      starGeo,
+      new THREE.PointsMaterial({
+        color: 0x67e8f9,
+        transparent: true,
+        opacity: 0.9,
+        size: 0.04,
+      })
+    );
+    scene.add(stars);
+
+    function resize() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height, false);
     }
 
-    function render(time) {
-      time *= 0.001;
-      if (resizeRendererToDisplaySize(renderer)) {
-        const canvas = renderer.domElement;
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-      }
-
-      mesh.rotation.x = time * 0.2;
-      mesh.rotation.y = time * 0.4;
-      wire.rotation.copy(mesh.rotation);
-
+    function render(t) {
+      const time = t * 0.001;
+      core.rotation.x = time * 0.7;
+      core.rotation.y = time * 0.9;
+      glow.rotation.x = -time * 0.6;
+      glow.rotation.y = time * 0.65;
+      torus.rotation.x = time * 0.9 + 1.2;
+      torus.rotation.y = time * 0.7;
+      ring.rotation.z = time * 0.5;
+      stars.rotation.y = time * 0.05;
       controls.update();
       renderer.render(scene, camera);
       requestAnimationFrame(render);
     }
-    requestAnimationFrame(render);
 
-    // set initial canvas size to the window
-    function fitCanvas() {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.style.width = window.innerWidth + 'px';
-      canvas.style.height = window.innerHeight + 'px';
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-    window.addEventListener('resize', fitCanvas);
-    fitCanvas();
+    window.addEventListener('resize', resize);
+    resize();
+    requestAnimationFrame(render);
   </script>
 </body>
 </html>
