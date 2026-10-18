@@ -2,54 +2,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360">
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#040816"/>
-      <stop offset="40%" stop-color="#0b1120"/>
-      <stop offset="100%" stop-color="#020611"/>
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="60%" stop-color="#050507"/>
+      <stop offset="100%" stop-color="#060406"/>
     </linearGradient>
-    <linearGradient id="cyanGlow" x1="0" x2="1">
-      <stop offset="0%" stop-color="#67e8f9"/>
-      <stop offset="100%" stop-color="#8b5cf6"/>
-    </linearGradient>
-    <linearGradient id="pinkGlow" x1="0" x2="1">
-      <stop offset="0%" stop-color="#f472b6"/>
-      <stop offset="100%" stop-color="#8b5cf6"/>
-    </linearGradient>
-    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
-      <feGaussianBlur stdDeviation="12" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="glo" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="b" />
+      <feMerge><feMergeNode in="b"/><feMergeNode/></feMerge>
     </filter>
   </defs>
-
   <rect width="1200" height="360" fill="url(#bg)"/>
 
-  <g opacity="0.08" stroke="#67e8f9" stroke-width="1">
-    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
-      <path d="M36 0 L0 0 0 36" fill="none"/>
-    </pattern>
-    <rect width="1200" height="360" fill="url(#grid)"/>
+  <!-- gold core -->
+  <g transform="translate(220,180)">
+    <circle r="96" fill="#231f14"/>
+    <circle r="58" fill="#0a0a0a"/>
+    <circle r="22" fill="#d4af37" filter="url(#glo)"/>
   </g>
 
-  <circle cx="230" cy="180" r="108" fill="url(#cyanGlow)" filter="url(#glow)" opacity="0.6"/>
-  <circle cx="230" cy="180" r="62" fill="#030712" opacity="0.9"/>
-
-  <g transform="translate(780 180)" filter="url(#glow)">
-    <g id="shape">
-      <polygon points="0,-92 80,-40 80,40 0,92 -80,40 -80,-40" fill="none" stroke="url(#pinkGlow)" stroke-width="2.5"/>
-      <polygon points="0,-52 46,-26 46,26 0,52 -46,26 -46,-26" fill="none" stroke="#67e8f9" stroke-width="2"/>
-      <circle r="12" fill="#67e8f9"/>
+  <!-- hacker hex rotate -->
+  <g transform="translate(780,180)">
+    <g id="hex">
+      <polygon points="-72,0 -36,-62 36,-62 72,0 36,62 -36,62" fill="none" stroke="#d4af37" stroke-width="2"/>
+      <polygon points="-42,0 -21,-36 21,-36 42,0 21,36 -21,36" fill="none" stroke="#b2953f" stroke-width="1.25"/>
+      <rect x="-14" y="-14" width="28" height="28" rx="4" fill="#0b0b0b" stroke="#3b3016"/>
     </g>
-    <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="14s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="13s" repeatCount="indefinite"/>
   </g>
 
-  <g transform="translate(430,90)">
-    <rect x="0" y="0" width="620" height="180" rx="18" fill="#0b1120" stroke="rgba(103,232,249,0.5)" opacity="0.7"/>
-    <text x="28" y="52" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Deepak Pandey</text>
-    <text x="28" y="92" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="16">Systems Developer • OS & Browser Internals</text>
-    <text x="28" y="130" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="14">Exploring kernels, memory, and low-level performance.</text>
-    <rect x="28" y="146" width="146" height="26" rx="13" fill="#67e8f9" opacity="0.12"/>
-    <text x="42" y="164" fill="#67e8f9" font-family="Segoe UI, Arial, sans-serif" font-size="12" letter-spacing="2">CYBERPUNK // 3D</text>
+  <!-- glass card -->
+  <g transform="translate(420,68)">
+    <rect x="0" y="0" width="620" height="220" rx="16" fill="#070707" stroke="#2b2412"/>
+    <text x="28" y="52" fill="#e6d7a3" font-family="Segoe UI, Arial" font-size="28" font-weight="700">Deepak Pandey</text>
+    <text x="28" y="92" fill="#b9ad82" font-family="Segoe UI, Arial" font-size="16">Systems Developer • Kernel & Browser Internals</text>
+    <text x="28" y="132" fill="#bcb09a" font-family="Segoe UI, Arial" font-size="13">Designing reliable, fast systems — focused on kernels, memory, and low-level performance.</text>
+    <rect x="28" y="150" width="160" height="30" rx="14" fill="#d4af37" opacity="0.09"/>
+    <text x="44" y="171" fill="#d4af37" font-family="Segoe UI, Arial" font-size="12" letter-spacing="1">CINEMATIC BLACK & GOLD</text>
   </g>
 </svg>

@@ -1,40 +1,37 @@
-# Hi, I'm Deepak Pandey ✨
+# Hi, I'm Deepak Pandey — Systems Engineer ⚫︎ Gold
 
 <p align="center">
-  <img src="./docs/hero.svg" alt="3D Hero" width="720" />
+  <img src="./docs/hero.svg" alt="Cinematic Hero" width="820" />
 </p>
 
-<p align="center"><em>Systems Developer • OS & Browser Internals Enthusiast</em></p>
+<p align="center"><em>Cinematic systems, kernel-level thinking, and dependable engineering.</em></p>
 
 ---
 
 ## About
 
-I build low-level systems and explore OS/browser internals with a pragmatic, craftsmanship-driven approach. I care about performance, reliability, and elegant engineering.
-
-This profile uses a premium look-and-feel: a dark glass UI aesthetic, a custom animated SVG hero for the README, and an interactive 3D demo hosted under the `docs/` folder (open via GitHub Pages).
+I build low-level systems and explore OS/browser internals with a craftsmanship-first approach. This profile now uses a cinematic black-and-gold theme and a kernel/hacker aesthetic with a small terminal-style overlay in the live demo.
 
 ---
 
-## Interactive 3D Demo
+## Live demo (interactive)
 
-Open the live interactive demo (drag to rotate, scroll to zoom):
-
+Open the interactive 3D kernel-themed demo:
 https://deepak-pandey2005.github.io/deepak-pandey2005/
 
-Note: READMEs on GitHub don't run JS; the demo runs from `docs/index.html` so you get a real WebGL experience.
+The demo includes a subtle kernel-boot overlay and a rotating golden core representing system internals.
 
 ---
 
 ## Featured Projects
 
-- **NullOS** — My OS experiments and low-level systems work: https://github.com/deepak-pandey2005/NullOS
+- **NullOS** — OS experiments and kernel work: https://github.com/deepak-pandey2005/NullOS
 - **SerenityOS contributions** — OS internals collaboration: https://github.com/SerenityOS/serenity
-- **Ladybird / Browser internals** — engine exploration: https://github.com/LadybirdBrowser/ladybird
+- **Browser internals / Ladybird** — engine exploration: https://github.com/LadybirdBrowser/ladybird
 
 ---
 
-## Tech Stack
+## Tech & Tools
 
 <p align="left">
   <img src="https://img.shields.io/badge/C-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" alt="C"/>
@@ -54,15 +51,15 @@ Note: READMEs on GitHub don't run JS; the demo runs from `docs/index.html` so yo
 
 ---
 
-## Contact
+## Contact & Resume
 
 - Email: deepak.os.system@gmail.com
-- Medium: https://medium.com/@deepak.os.system
-- Instagram: https://instagram.com/deepakpanday546
+- Resume (PDF/MD): https://deepak-pandey2005.github.io/deepak-pandey2005/resume.md
 
 ---
 
-If you want further polishing I can:
-- produce a GIF preview for the README automatically
-- tweak the 3D scene (cyberpunk neon, minimal, or hardware-inspired)
-- add an automated deploy action to publish `docs/` to Pages on each push
+If you want further changes I can:
+- produce a short cinematic GIF preview for the README,
+- add an automated deploy action to publish docs/ to GitHub Pages on push,
+- add downloadable PDF resume,
+- add project cards with links and live demo previews.

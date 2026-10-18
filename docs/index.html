@@ -3,224 +3,92 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Deepak Pandey | Cyberpunk 3D</title>
+  <title>Deepak Pandey — Kernel Demo</title>
   <style>
-    :root {
-      --bg-1: #020611;
-      --bg-2: #0b1120;
-      --cyan: #67e8f9;
-      --purple: #8b5cf6;
-      --pink: #f472b6;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      height: 100%;
-      background:
-        radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.22), transparent 24%),
-        radial-gradient(circle at 75% 20%, rgba(103, 232, 249, 0.18), transparent 28%),
-        linear-gradient(135deg, var(--bg-1), var(--bg-2) 42%, #050b18 100%);
-      color: var(--text);
-      font-family: Inter, "Segoe UI", sans-serif;
-      overflow: hidden;
-    }
-
-    .hud {
-      position: absolute;
-      top: 22px;
-      left: 22px;
-      z-index: 10;
-      background: rgba(15, 23, 42, 0.42);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(103, 232, 249, 0.28);
-      box-shadow: 0 0 24px rgba(139, 92, 246, 0.18);
-      border-radius: 14px;
-      padding: 14px 18px;
-      max-width: 360px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 6px;
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      opacity: 0.9;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(26px, 3vw, 42px);
-      line-height: 1.1;
-      letter-spacing: 0.04em;
-      font-weight: 700;
-    }
-
-    p {
-      margin: 8px 0 0;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(103, 232, 249, 0.26);
-      color: var(--cyan);
-      background: rgba(103, 232, 249, 0.08);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-top: 10px;
-    }
-
-    #c {
-      display: block;
-      width: 100vw;
-      height: 100vh;
-    }
+    :root{--bg:#040406;--gold:#d4af37;--muted:#a8a8a8}
+    html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#000 0%,#050509 100%);color:#ddd}
+    canvas{display:block;width:100vw;height:100vh}
+    .overlay{position:absolute;left:20px;bottom:20px;background:rgba(0,0,0,0.6);padding:12px 14px;border-radius:10px;border:1px solid rgba(212,175,55,0.12);backdrop-filter:blur(6px);}
+    .boot{font-family:Source Code Pro,monospace;font-size:12px;color:#cfcfcf;max-width:520px;line-height:1.4}
+    .boot .gold{color:var(--gold)}
+    .tophud{position:absolute;left:22px;top:22px;background:rgba(0,0,0,0.5);padding:10px 12px;border-radius:8px;border:1px solid rgba(212,175,55,0.08)}
+    a.btn{display:inline-block;margin-left:10px;padding:6px 10px;border-radius:8px;background:linear-gradient(90deg,rgba(212,175,55,0.16),rgba(212,175,55,0.06));border:1px solid rgba(212,175,55,0.18);color:var(--gold);text-decoration:none;font-weight:600}
   </style>
 </head>
 <body>
-  <div class="hud">
-    <div class="eyebrow">Systems / OS</div>
-    <h1>Deepak Pandey</h1>
-    <p>Exploring kernels, browser internals, and low-level engineering through elegant, reliable systems design.</p>
-    <div class="badge">Cyberpunk // 3D</div>
+  <div class="tophud">
+    <strong style="color:var(--gold)">Deepak Pandey</strong>
+    <a class="btn" href="/deepak-pandey2005/resume.md" target="_blank">Resume</a>
   </div>
-
   <canvas id="c"></canvas>
+
+  <div class="overlay boot" id="boot">
+    <div><span class="gold">[kernel]</span> detecting devices... <span id="b1">OK</span></div>
+    <div><span class="gold">[driver]</span> init: network (eth0) ... <span id="b2">OK</span></div>
+    <div><span class="gold">[memory]</span> mapping physical memory ... <span id="b3">OK</span></div>
+    <div style="margin-top:8px;color:#9aa0a6;font-size:12px">Tip: drag to rotate • scroll to zoom • press H to hide UI</div>
+  </div>
 
   <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
   <script src="https://unpkg.com/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
   <script>
     const canvas = document.getElementById('c');
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x020611, 1);
+    const renderer = new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    renderer.setClearColor(0x000000,1);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x020611, 0.085);
+    scene.fog = new THREE.FogExp2(0x000000, 0.06);
 
-    const camera = new THREE.PerspectiveCamera(42, 2, 0.1, 100);
-    camera.position.set(0, 0.5, 7);
+    const camera = new THREE.PerspectiveCamera(50,2,0.1,200);
+    camera.position.set(0,0,9);
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.enablePan = false;
-    controls.enableZoom = true;
-    controls.minDistance = 4;
-    controls.maxDistance = 12;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 1.6;
+    controls.enableDamping=true;controls.autoRotate=true;controls.autoRotateSpeed=0.7;controls.minDistance=4;controls.maxDistance=18;
 
-    const ambient = new THREE.AmbientLight(0xc7d2fe, 0.7);
-    scene.add(ambient);
+    // lights
+    const amb = new THREE.AmbientLight(0xffffff,0.25); scene.add(amb);
+    const key = new THREE.PointLight(0xffd98e,2.6,40,2); key.position.set(4,4,6); scene.add(key);
+    const fill = new THREE.PointLight(0x8a6a2f,1.2,30,2); fill.position.set(-4,-3,4); scene.add(fill);
 
-    const keyLight = new THREE.PointLight(0x67e8f9, 3, 20, 2);
-    keyLight.position.set(3, 4, 5);
-    scene.add(keyLight);
+    // core
+    const coreGeo = new THREE.OctahedronGeometry(1.6,0);
+    const coreMat = new THREE.MeshStandardMaterial({color:0x0a0a0a,metalness:0.9,roughness:0.15,emissive:0x2b2108,emissiveIntensity:0.45});
+    const core = new THREE.Mesh(coreGeo,coreMat); scene.add(core);
 
-    const accentLight = new THREE.PointLight(0x8b5cf6, 2.5, 20, 2);
-    accentLight.position.set(-5, -2, 3);
-    scene.add(accentLight);
+    // subtle gold lines
+    const wire = new THREE.LineSegments(new THREE.WireframeGeometry(coreGeo), new THREE.LineBasicMaterial({color:0xd4af37,transparent:true,opacity:0.9})); scene.add(wire);
 
-    const ring = new THREE.Mesh(
-      new THREE.TorusGeometry(2.8, 0.06, 24, 220),
-      new THREE.MeshBasicMaterial({ color: 0x67e8f9, transparent: true, opacity: 0.8 })
-    );
-    ring.rotation.x = Math.PI / 2.5;
-    scene.add(ring);
-
-    const group = new THREE.Group();
-    scene.add(group);
-
-    const coreGeom = new THREE.IcosahedronGeometry(1.5, 1);
-    const coreMat = new THREE.MeshStandardMaterial({
-      color: 0x0f172a,
-      emissive: 0x1d4ed8,
-      emissiveIntensity: 0.5,
-      metalness: 0.9,
-      roughness: 0.2,
-      flatShading: true,
-    });
-
-    const core = new THREE.Mesh(coreGeom, coreMat);
-    group.add(core);
-
-    const glow = new THREE.LineSegments(
-      new THREE.WireframeGeometry(coreGeom),
-      new THREE.LineBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.9 })
-    );
-    group.add(glow);
-
-    const torus = new THREE.Mesh(
-      new THREE.TorusKnotGeometry(1.65, 0.36, 220, 26, 2, 3),
-      new THREE.MeshStandardMaterial({
-        color: 0x8b5cf6,
-        emissive: 0x8b5cf6,
-        emissiveIntensity: 0.8,
-        metalness: 0.8,
-        roughness: 0.24,
-      })
-    );
-    torus.rotation.x = 1.2;
-    group.add(torus);
-
-    const starGeo = new THREE.BufferGeometry();
-    const starCount = 1400;
-    const starPositions = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount; i++) {
-      const i3 = i * 3;
-      starPositions[i3] = (Math.random() - 0.5) * 30;
-      starPositions[i3 + 1] = (Math.random() - 0.5) * 30;
-      starPositions[i3 + 2] = (Math.random() - 0.5) * 20;
-    }
-    starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-    const stars = new THREE.Points(
-      starGeo,
-      new THREE.PointsMaterial({
-        color: 0x67e8f9,
-        transparent: true,
-        opacity: 0.9,
-        size: 0.04,
-      })
-    );
-    scene.add(stars);
-
-    function resize() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height, false);
+    // orbiting shards
+    const shardGeo = new THREE.BoxGeometry(0.18,0.6,0.08);
+    const shardMat = new THREE.MeshStandardMaterial({color:0x1a1a1a,metalness:0.8,roughness:0.2,emissive:0x3a2c0c,emissiveIntensity:0.8});
+    const shards = new THREE.Group(); scene.add(shards);
+    for(let i=0;i<12;i++){
+      const s=new THREE.Mesh(shardGeo,shardMat);
+      const a=(i/12)*Math.PI*2; const r=3.0+Math.random()*1.2;
+      s.position.set(Math.cos(a)*r,(Math.random()-0.5)*0.6,Math.sin(a)*r);
+      s.rotation.set(Math.random()*2,Math.random()*2,Math.random()*2);
+      shards.add(s);
     }
 
-    function render(t) {
-      const time = t * 0.001;
-      core.rotation.x = time * 0.7;
-      core.rotation.y = time * 0.9;
-      glow.rotation.x = -time * 0.6;
-      glow.rotation.y = time * 0.65;
-      torus.rotation.x = time * 0.9 + 1.2;
-      torus.rotation.y = time * 0.7;
-      ring.rotation.z = time * 0.5;
-      stars.rotation.y = time * 0.05;
-      controls.update();
-      renderer.render(scene, camera);
-      requestAnimationFrame(render);
-    }
+    // subtle particle field
+    const pGeo=new THREE.BufferGeometry(); const cnt=900; const pos=new Float32Array(cnt*3);
+    for(let i=0;i<cnt;i++){pos[i*3]=(Math.random()-0.5)*40; pos[i*3+1]=(Math.random()-0.5)*20; pos[i*3+2]=(Math.random()-0.5)*40}
+    pGeo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    const particles=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xd4af37,opacity:0.06,size:0.06,transparent:true})); scene.add(particles);
 
-    window.addEventListener('resize', resize);
-    resize();
-    requestAnimationFrame(render);
+    function resize(){const w=window.innerWidth,h=window.innerHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false)}
+    window.addEventListener('resize',resize);resize();
+
+    let t0=0; function animate(t){const time=t*0.001; core.rotation.y=time*0.4; core.rotation.x=time*0.25; wire.rotation.copy(core.rotation); shards.rotation.y=time*0.6; particles.rotation.y=time*0.03; controls.update(); renderer.render(scene,camera); requestAnimationFrame(animate)}
+    requestAnimationFrame(animate);
+
+    // boot text anim
+    const b1=document.getElementById('b1'); const b2=document.getElementById('b2'); const b3=document.getElementById('b3');
+    setTimeout(()=>b1.textContent='OK',400); setTimeout(()=>b2.textContent='OK',800); setTimeout(()=>b3.textContent='OK',1200);
+
+    // toggle UI
+    let hud=true; window.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='h'){hud=!hud;document.getElementById('boot').style.display=hud?'block':'none';document.querySelector('.tophud').style.display=hud?'block':'none'}});
   </script>
 </body>
 </html>
