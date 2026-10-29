@@ -1,4 +1,4 @@
-# Hi, I'm Deepak Pandey — Systems Engineer ⚫︎ Gold
+# Hi, I'm Deepak Pandey — Systems Engineer
 
 
 <p align="center"><em>Operating systems, kernel-level thinking, and dependable engineering.</em></p>
