@@ -7,8 +7,7 @@
 
 ## About
 
-I build low-level systems and explore OS/browser internals with a craftsmanship-first approach. This profile now uses a cinematic black-and-gold theme and a kernel/hacker aesthetic with a small terminal-style overlay in the live demo.
-
+I build low-level systems and explore OS/browser internals with a craftsmanship-first approach.
 ---
 
 ## Featured Projects
