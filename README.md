@@ -1,10 +1,12 @@
 <div align="center">
 
-# Deepak Pandey
+<a href="https://github.com/deepak-pandey2005">
+  <img src="assets/banner.svg" alt="Deepak Pandey — Systems & Low-Level Software Engineer" width="100%" />
+</a>
 
 <p align="center">
   <a href="https://github.com/deepak-pandey2005">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1000&color=58A6FF&background=00000000&center=true&vCenter=true&width=650&height=50&lines=Systems+%26+Low-Level+Software+Engineer;Building+bare-metal+NullOS+in+Rust+%26+x86_64+ASM;Writing+Linux+kernel+drivers+%26+zero-copy+engines;Mechanical+sympathy+from+silicon+to+userspace" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=19&duration=3000&pause=1000&color=58A6FF&background=00000000&center=true&vCenter=true&width=680&height=45&lines=Systems+%26+Low-Level+Software+Engineer;Building+bare-metal+NullOS+in+Rust+%26+x86_64+ASM;Writing+Linux+kernel+drivers+%26+zero-copy+engines;Mechanical+sympathy+from+silicon+to+userspace" alt="Typing SVG" />
   </a>
 </p>
 
@@ -12,8 +14,9 @@
 [![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)](https://github.com/deepak-pandey2005)
 [![Rust](https://img.shields.io/badge/Rust-DEA584?style=for-the-badge&logo=rust&logoColor=black)](https://github.com/deepak-pandey2005)
 [![Linux](https://img.shields.io/badge/Linux_Kernel-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/deepak-pandey2005)
-[![Assembly](https://img.shields.io/badge/x86__64_ASM-000000?style=for-the-badge&logo=gnubash&logoColor=white)](https://github.com/deepak-pandey2005)
+[![Assembly](https://img.shields.io/badge/x86__64_ASM-161B22?style=for-the-badge&logo=gnubash&logoColor=white)](https://github.com/deepak-pandey2005)
 [![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://github.com/deepak-pandey2005)
+![Profile Views](https://komarev.com/ghpvc/?username=deepak-pandey2005&color=58A6FF&style=for-the-badge&label=VIEWS)
 
 ---
 
@@ -25,7 +28,7 @@
 ─────────────────────────────────────────────────────────────────────────────
 Host Architecture:  x86_64 Bare-Metal / Linux 6.x
 Execution Model:    Ring 0 Kernelspace ⟷ Ring 3 Userspace Isolation
-Specialization:     Operating Systems, Linux Drivers, Storage Engines, Networking
+Specialization:     Operating Systems, Linux Drivers, Storage Engines, NetSec
 Primary Toolchain:  C (C99/C11), Rust, x86_64 Assembly (NASM/GAS), Go, Bash
 Low-Level Core:     4-Level Paging, APIC/IDT, MMIO, DMA, Slub/Buddy Allocators
 Systems Tooling:    QEMU, GDB, Valgrind, Make, CMake, GCC, LLVM, Perf, Wireshark
@@ -35,10 +38,10 @@ Active Research:    SMP Scheduling, VirtIO Network Stack, Driver Subsystems
 
 ## 🔬 About Me
 
-I am a systems developer passionate about peeling back layers of abstraction to understand how hardware, kernels, and compilers interact. My work spans writing bare-metal x86_64 operating systems, implementing Linux device drivers, analyzing network datapaths at line rate, and architecting persistent storage engines.
+I am a systems engineer focused on peeling back layers of abstraction to understand how hardware, kernels, and compilers interact. My work spans building bare-metal `x86_64` operating systems, implementing Linux kernel device drivers, analyzing network datapaths at line rate, and architecting persistent storage engines.
 
-- ⚙️ **Core Focus**: OS development, memory management (Paging, Slub/Buddy allocators), interrupt dispatching, and low-level concurrency.
-- 🛠️ **Current Research**: SMP scheduling, VirtIO network drivers, and Linux kernel subsystem internals.
+- ⚙️ **Core Focus**: OS internals, virtual memory management (4-level paging, Slub/Buddy allocators), interrupt dispatching, and lock-free / low-level concurrency.
+- 🛠️ **Active Research**: Symmetric Multiprocessing (SMP) scheduling, VirtIO network drivers, and Linux kernel subsystem internals.
 - 🎯 **Engineering Philosophy**: *Mechanical sympathy, craftsmanship, and deterministic performance from bootloader to userspace.*
 
 ---
@@ -51,15 +54,15 @@ I am a systems developer passionate about peeling back layers of abstraction to 
       <h3><a href="https://github.com/deepak-pandey2005/NullOS">🖥️ NullOS — Bare-Metal 64-Bit OS</a></h3>
       <p>Custom, bare-metal 64-bit operating system for <code>x86_64</code> engineered from scratch in Rust, Assembly, and C.</p>
       <ul>
-        <li>UEFI firmware handoff & bootloader protocol integration</li>
-        <li>Virtual memory manager (4-level paging) & frame allocator</li>
+        <li>UEFI firmware handoff &amp; bootloader protocol integration</li>
+        <li>Virtual memory manager (4-level paging) &amp; physical frame allocator</li>
         <li>APIC / PIC interrupt handling, preemption, and Ring 3 userspace isolation</li>
         <li>SMP (Symmetric Multiprocessing) and VirtIO networking foundation</li>
       </ul>
       <p>
         <img src="https://img.shields.io/badge/Rust-DEA584?style=flat-square&logo=rust&logoColor=black" alt="Rust"/>
-        <img src="https://img.shields.io/badge/Assembly-333333?style=flat-square&logo=assembly&logoColor=white" alt="ASM"/>
-        <img src="https://img.shields.io/badge/QEMU-FF6600?style=flat-square" alt="QEMU"/>
+        <img src="https://img.shields.io/badge/x86__64_ASM-30363D?style=flat-square&logo=gnubash&logoColor=white" alt="x86_64 ASM"/>
+        <img src="https://img.shields.io/badge/QEMU-FF6600?style=flat-square&logo=qemu&logoColor=white" alt="QEMU"/>
       </p>
       <details>
         <summary><b>🔍 View NullOS Architecture Blueprint</b></summary>
@@ -68,29 +71,29 @@ I am a systems developer passionate about peeling back layers of abstraction to 
 [ UEFI Firmware / Bootloader ]
                │
                ▼
-[ Long Mode (64-bit) & GDT/TSS Initialization ]
+[ Long Mode (64-bit) &amp; GDT/TSS Init ]
                │
                ▼
-[ 4-Level Paging (PML4) & Physical Frame Allocator ]
+[ 4-Level Paging (PML4) &amp; Frame Allocator ]
                │
                ▼
-[ IDT (Interrupt Descriptor Table) & Local APIC ]
+[ IDT (Interrupt Table) &amp; Local APIC ]
                │
                ▼
-[ Preemptive Multitasking & Scheduler ]
+[ Preemptive Multitasking &amp; SMP Scheduler ]
                │
                ▼
-[ Ring 3 Userspace Isolation & Fast Syscalls ]
+[ Ring 3 Userspace Isolation &amp; Syscalls ]
         </pre>
       </details>
     </td>
     <td width="50%" valign="top">
-      <h3><a href="https://github.com/deepak-pandey2005/CoreMonitor">🛡️ CoreMonitor — Low-Latency IDS & Analyzer</a></h3>
+      <h3><a href="https://github.com/deepak-pandey2005/CoreMonitor">🛡️ CoreMonitor — Low-Latency IDS &amp; Analyzer</a></h3>
       <p>High-performance network traffic analyzer and intrusion detection system.</p>
       <ul>
-        <li>Pure <b>C low-level datapath engine</b> for zero-copy packet sniffing & line-speed protocol parsing</li>
-        <li>Stateful intrusion & anomaly detection algorithms</li>
-        <li><b>Go upper orchestration layer</b> for telemetry streaming, storage, and live terminal dashboard</li>
+        <li>Pure <b>C low-level datapath engine</b> for zero-copy packet sniffing &amp; line-speed protocol parsing</li>
+        <li>Stateful intrusion &amp; anomaly detection algorithms</li>
+        <li><b>Go orchestration layer</b> for telemetry streaming, storage, and live terminal dashboard</li>
       </ul>
       <p>
         <img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white" alt="C"/>
@@ -107,13 +110,13 @@ I am a systems developer passionate about peeling back layers of abstraction to 
 [ C Datapath: Zero-Copy Ring Buffer ]
             │
             ▼
-[ Protocol Parser (Eth ➔ IPv4/IPv6 ➔ TCP/UDP) ]
+[ Protocol Parser (Eth ➔ IPv4/6 ➔ TCP/UDP) ]
             │
             ▼
-[ Stateful Intrusion & Anomaly Engine ]
+[ Stateful Intrusion &amp; Anomaly Engine ]
             │ (IPC / Shared Ring Buffer)
             ▼
-[ Go Orchestration Layer ➔ InfluxDB / TUI Dashboard ]
+[ Go Orchestration ➔ InfluxDB / TUI ]
         </pre>
       </details>
     </td>
@@ -123,15 +126,34 @@ I am a systems developer passionate about peeling back layers of abstraction to 
       <h3><a href="https://github.com/deepak-pandey2005/LINUX_DRIVER">🐧 Linux Kernel Driver Development</a></h3>
       <p>Hands-on implementations of Linux device drivers and kernel subsystems.</p>
       <ul>
-        <li>Character device drivers with ioctl, sysfs, and procfs interfaces</li>
+        <li>Character device drivers with <code>ioctl</code>, <code>sysfs</code>, and <code>procfs</code> interfaces</li>
         <li>Hardware interrupt handling (top/bottom halves, tasklets, workqueues)</li>
-        <li>Memory-mapped I/O, DMA, and race-condition prevention (spinlocks, mutexes)</li>
+        <li>Memory-mapped I/O (MMIO), DMA, and concurrency primitives (spinlocks, mutexes)</li>
       </ul>
       <p>
         <img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white" alt="C"/>
         <img src="https://img.shields.io/badge/Linux_Kernel-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux"/>
-        <img src="https://img.shields.io/badge/GDB-E05D44?style=flat-square" alt="GDB"/>
+        <img src="https://img.shields.io/badge/GDB-E05D44?style=flat-square&logo=gnu&logoColor=white" alt="GDB"/>
       </p>
+      <details>
+        <summary><b>🔍 View Driver Subsystem Flow</b></summary>
+        <br/>
+        <pre>
+[ Userspace App (read / write / ioctl) ]
+               │ (Syscall Boundary)
+               ▼
+[ VFS ➔ Char Device File Operations ]
+               │
+               ▼
+[ Synchronization (Spinlock / Mutex) ]
+               │
+               ▼
+[ Top-Half IRQ ➔ Workqueue / Tasklet ]
+               │
+               ▼
+[ MMIO Registers &amp; DMA Ring Buffers ]
+        </pre>
+      </details>
     </td>
     <td width="50%" valign="top">
       <h3><a href="https://github.com/deepak-pandey2005/RustKV">📦 RustKV — Persistent Key-Value Engine</a></h3>
@@ -139,12 +161,30 @@ I am a systems developer passionate about peeling back layers of abstraction to 
       <ul>
         <li>Log-Structured Merge-tree (LSM) architecture with Write-Ahead Logging (WAL)</li>
         <li>Immutable MemTable flushing and SSTable format design</li>
-        <li>Crash-resilient recovery mechanisms and bloom-filter lookup optimization</li>
+        <li>Crash-resilient recovery mechanisms and Bloom-filter lookup optimization</li>
       </ul>
       <p>
         <img src="https://img.shields.io/badge/Rust-DEA584?style=flat-square&logo=rust&logoColor=black" alt="Rust"/>
-        <img src="https://img.shields.io/badge/Storage-Engine-3DDC84?style=flat-square" alt="Storage"/>
+        <img src="https://img.shields.io/badge/LSM_Tree-3DDC84?style=flat-square" alt="LSM Tree"/>
+        <img src="https://img.shields.io/badge/Storage_Engine-1F6FEB?style=flat-square" alt="Storage"/>
       </p>
+      <details>
+        <summary><b>🔍 View RustKV Storage Engine Pipeline</b></summary>
+        <br/>
+        <pre>
+[ Put / Delete / Get Request ]
+               │
+               ├──▶ [ Write-Ahead Log (WAL) ]
+               ▼
+[ Active MemTable (In-Memory SkipList) ]
+               │ (Flush Threshold)
+               ▼
+[ Immutable MemTable ➔ L0 SSTable ]
+               │
+               ▼
+[ Leveled Compaction + Bloom Filters ]
+        </pre>
+      </details>
     </td>
   </tr>
 </table>
@@ -155,12 +195,32 @@ I am a systems developer passionate about peeling back layers of abstraction to 
 
 ### 📌 Live Repository Spotlights
 
-<a href="https://github.com/deepak-pandey2005/NullOS">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=deepak-pandey2005&repo=NullOS&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=79C0FF&text_color=C9D1D9" alt="NullOS Repo" />
-</a>
-<a href="https://github.com/deepak-pandey2005/CoreMonitor">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=deepak-pandey2005&repo=CoreMonitor&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=79C0FF&text_color=C9D1D9" alt="CoreMonitor Repo" />
-</a>
+<table>
+  <tr>
+    <td>
+      <a href="https://github.com/deepak-pandey2005/NullOS">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=deepak-pandey2005&repo=NullOS&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=79C0FF&text_color=C9D1D9" alt="NullOS Repo" />
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/deepak-pandey2005/CoreMonitor">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=deepak-pandey2005&repo=CoreMonitor&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=79C0FF&text_color=C9D1D9" alt="CoreMonitor Repo" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/deepak-pandey2005/LINUX_DRIVER">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=deepak-pandey2005&repo=LINUX_DRIVER&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=79C0FF&text_color=C9D1D9" alt="LINUX_DRIVER Repo" />
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/deepak-pandey2005/RustKV">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=deepak-pandey2005&repo=RustKV&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=79C0FF&text_color=C9D1D9" alt="RustKV Repo" />
+      </a>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -170,11 +230,12 @@ I am a systems developer passionate about peeling back layers of abstraction to 
 
 <div align="left">
 
-| Domain | Technologies & Competencies |
+| Domain | Technologies &amp; Competencies |
 | :--- | :--- |
 | **Languages** | `C (C99/C11)`, `Rust`, `x86_64 Assembly (NASM/GAS)`, `Go`, `Bash`, `Python` |
-| **Kernel & OS Internals** | 4-Level Paging, Physical Frame Allocator, Virtual Memory, Interrupt Handling (APIC/IDT), Task Scheduling, Context Switching, Ring 0/Ring 3, Syscalls |
-| **Linux Subsystems** | Kernel Modules, Character Devices, Platform Drivers, Device Trees, ioctl, sysfs, eBPF, kprobes |
+| **Kernel &amp; OS Internals** | 4-Level Paging, Physical Frame Allocator, Virtual Memory, Interrupt Handling (APIC/IDT), Task Scheduling, Context Switching, Ring 0/Ring 3, Fast Syscalls |
+| **Linux Subsystems** | Kernel Modules, Character Devices, Platform Drivers, Device Trees, `ioctl`, `sysfs`, `procfs`, MMIO/DMA, eBPF, kprobes |
+| **Networking &amp; Storage** | `AF_PACKET`, Raw Sockets, Zero-Copy Ring Buffers, Protocol Parsing, LSM-Trees, WAL, SSTables, Bloom Filters |
 | **Systems Tooling** | `QEMU`, `GDB`, `LLDB`, `Make`, `CMake`, `Valgrind`, `Objdump/Readelf`, `Perf`, `Wireshark`, `Git` |
 
 </div>
@@ -191,6 +252,10 @@ I am a systems developer passionate about peeling back layers of abstraction to 
 <br/>
 
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=deepak-pandey2005&theme=tokyonight&hide_border=true&background=0D1117&ring=58A6FF&fire=FF7B72&currStreakLabel=79C0FF" alt="GitHub Streak" />
+
+<br/><br/>
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=deepak-pandey2005&theme=tokyo-night&bg_color=0D1117&color=58A6FF&line=79C0FF&point=C9D1D9&area=true&hide_border=true" alt="GitHub Activity Graph" width="95%" />
 
 </div>
 
